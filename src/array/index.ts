@@ -57,6 +57,24 @@ console.log(func3(arr3));
 //    isSubset([1, 2, 3], [1, 2]); // true
 //    isSubset([1, 2, 3], [1, 4]); // false
 //    ```
+
+const isSubsetTypeScript = (arr: number[], arr2: number[]): boolean => {
+    const newSet = new Set(arr);
+    return arr2.every(element => newSet.has(element))
+}
+
+const isSubset = (arr, arr2) => {
+    const newSet = new Set(arr);
+    return arr2.every(element => newSet.has(element));
+}
+
+console.log(isSubset([1, 2, 3], [1, 2]));
+console.log(isSubset([1, 2, 3], [1, 4]));
+
+
+isSubset([1, 2, 3], [1, 2]);
+isSubset([1, 2, 3], [1, 4]);
+
 //
 // 3️⃣ **Максимальная сумма подмассива (Kadane's Algorithm)**
 //    *Найти подмассив с максимальной суммой.*
