@@ -81,6 +81,19 @@ isSubset([1, 2, 3], [1, 4]);
 //    ```typescript
 //    maxSubarraySum([-2,1,-3,4,-1,2,1,-5,4]); // 6 (подмассив [4,-1,2,1])
 //    ```
+
+const maxSubarraySum = (nums: number[]): number => {
+    let maxSum = nums[0];
+    let currentSum = nums[0];
+
+    for (let i = 1; i < nums.length; i++) {
+        currentSum = Math.max(nums[i], currentSum + nums[i]);
+        maxSum = Math.max(maxSum, currentSum);
+    }
+
+    return maxSum;
+}
+
 //
 // 4️⃣ **Повернуть массив влево на `k` элементов**
 //    *Реализуй функцию, которая сдвигает массив влево на `k` элементов.*
