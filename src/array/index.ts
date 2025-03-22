@@ -101,6 +101,16 @@ const maxSubarraySum = (nums: number[]): number => {
 //    rotateLeft([1, 2, 3, 4, 5], 2); // [3, 4, 5, 1, 2]
 //    ```
 //
+
+const rotateLeft = <T>(arr: T[], k: number): T[] => {
+    const n = arr.length;
+    if (n === 0) return arr;
+    k = k % n;
+    return [...arr.slice(k), ...arr.slice(0, k)];
+}
+
+
+
 // 5️⃣ **Найти два числа в массиве, сумма которых равна `target` (Two Sum)**
 //    *Реализуй функцию, которая находит два числа в массиве, дающих в сумме `target`.*
 //    ```typescript
