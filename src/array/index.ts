@@ -109,14 +109,25 @@ const rotateLeft = <T>(arr: T[], k: number): T[] => {
     return [...arr.slice(k), ...arr.slice(0, k)];
 }
 
-
-
 // 5️⃣ **Найти два числа в массиве, сумма которых равна `target` (Two Sum)**
 //    *Реализуй функцию, которая находит два числа в массиве, дающих в сумме `target`.*
 //    ```typescript
 //    twoSum([2, 7, 11, 15], 9); // [2, 7]
 //    ```
-//
+
+const twoSum = (arr: number[], k: number): number[] | null => {
+    const map = new Map<number, number>();
+
+    for (let num of arr) {
+        const complement = k - num;
+        if (map.has(complement)) {
+            return [complement, num];
+        }
+        map.set(num, true);
+    }
+
+    return null;
+};
 // ---
 //
 // ### **📌 Задачи на строки**
