@@ -137,6 +137,12 @@ const twoSum = (arr: number[], k: number): number[] | null => {
 //    isPalindrome("racecar"); // true
 //    isPalindrome("hello"); // false
 //    ```
+
+const isPalindrome = (str: string): boolean => {
+    return str.toString().split("").reverse().join("") == str.toString();
+};
+
+console.log('isPalindrome?',isPalindrome("racecar"))
 //
 // 7️⃣ **Анаграммы**
 //    *Даны две строки. Проверь, являются ли они анаграммами (состоят из одинаковых букв в разном порядке).*
