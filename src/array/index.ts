@@ -151,6 +151,13 @@ console.log('isPalindrome?',isPalindrome("racecar"))
 //    isAnagram("hello", "world"); // false
 //    ```
 //
+
+const isAnagram = (str1: string, str2: string) : boolean => {
+    return str1.split('').sort().join('') === str2.split('').sort().join('');
+}
+
+console.log(isAnagram("listen", "silent"));
+
 // 8️⃣ **Самое длинное слово в строке**
 //    *Реализуй функцию, которая возвращает самое длинное слово в строке.*
 //    ```typescript
