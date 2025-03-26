@@ -164,6 +164,22 @@ console.log(isAnagram("listen", "silent"));
 //    longestWord("The quick brown fox jumped over the lazy dog"); // "jumped"
 //    ```
 //
+
+const longestWord = (sentence: string): string => {
+    const words = sentence.split(' ');
+
+    let longest = "";
+
+    for (let i = 0; i < words.length; i++) {
+        if (words[i].length > longest.length) {
+            longest = words[i];
+        }
+    }
+
+    return longest;
+}
+
+
 // 9️⃣ **Сжатие строки (Run-Length Encoding)**
 //    *Сожми строку, заменяя повторяющиеся символы на `{символ}{количество повторений}`.*
 //    ```typescript
