@@ -185,6 +185,24 @@ const longestWord = (sentence: string): string => {
 //    ```typescript
 //    compressString("aaabbcddd"); // "a3b2c1d3"
 //    ```
+
+const compressString = (str: string): string => {
+    let newStr = '';
+    let count = 1;
+
+    for (let i = 0; i < str.length; i++) {
+        while (i < str.length - 1 && str[i] === str[i+1]) {
+            count++;
+            i++;
+        }
+        newStr += str[i] + count;
+        count = 1;
+    }
+    return newStr;
+}
+
+console.log(compressString("aaabbcddd"));
+
 //
 // 🔟 **Подсчет гласных в строке**
 //    *Реализуй функцию, которая считает количество гласных (`a, e, i, o, u`) в строке.*
