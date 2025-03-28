@@ -209,7 +209,9 @@ console.log(compressString("aaabbcddd"));
 //    ```typescript
 //    countVowels("hello world"); // 3
 //    ```
-//
-// ---
-//
-// Выбирай любую задачу и решай! Если где-то застрянешь — помогу 💪🔥
+
+const countVowels = (str: string) : number => {
+    const vowels = "aeiou";
+
+    return Array.from(str.toLowerCase()).filter(char => vowels.includes(char)).length;
+}
