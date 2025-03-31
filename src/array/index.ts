@@ -283,6 +283,28 @@ const returnPairWithAGivenSum = (arr: number[], targetSum: number): number[] | n
 //      Вход: [0, 1, 0, 1, 1, 0]
 //      Выход: [0, 0, 0, 1, 1, 1]
 //      ```
+
+const zeroOneSort = (arr: number[]): number[] => {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left < right) {
+        if (arr[left] === 0) {
+            left++;
+        }
+        else if (arr[right] === 1) {
+            right--;
+        }
+        else {
+            [arr[left], arr[right]] = [arr[right], arr[left]];
+            left++;
+            right--;
+        }
+    }
+
+    return arr;
+}
+
 //
 // ---
 //
