@@ -364,6 +364,29 @@ const returnTrioWithANullSum = (nums: number[]): number[][] => {
 //      Вход: [2, 1, 5, 2, 8, 1, 5], k = 3
 //      Выход: 15 (подмассив [5, 2, 8])
 //      ```
+
+const maxSumSubarray = (arr: number[], k: number): number => {
+    if (arr.length < k) {
+        throw new Error("Размер массива меньше размера окна.");
+    }
+
+    let maxSum = 0;
+    for (let i = 0; i < k; i++) {
+        maxSum += arr[i];
+    }
+
+    let currentSum = maxSum;
+
+    for (let i = k; i < arr.length; i++) {
+        currentSum += arr[i] - arr[i - k];
+        maxSum = Math.max(maxSum, currentSum);
+    }
+
+    return maxSum;
+
+}
+
+
 //
 // ---
 //
