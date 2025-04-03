@@ -398,6 +398,26 @@ const maxSumSubarray = (arr: number[], k: number): number => {
 //      Выход: 5 (подмассив [1, 2, 1, 0, 1])
 //      ```
 //
+
+const maxLengthSubarray = (arr : number[], K:number) : number => {
+    let maxLength = 0;
+    let currentSum = 0;
+    let left = 0;
+
+    for (let right = 0; right < arr.length; right++) {
+        currentSum += arr[right];
+
+        while (currentSum > K) {
+            currentSum -= arr[left];
+            left++;
+        }
+
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+
+    return maxLength;
+}
+
 // ---
 //
 // 3. 🌟 **Наибольшее количество уникальных символов в подстроке фиксированной длины:**
