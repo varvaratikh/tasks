@@ -427,6 +427,34 @@ const maxLengthSubarray = (arr : number[], K:number) : number => {
 //      Вход: "abcabcbb", k = 3
 //      Выход: 3 ("abc")
 //      ```
+
+
+const largestNumberUniqueCharacters = (str: string, k: number): number => {
+    if (k > str.length) return 0;
+
+    let maxUnique = 0;
+    const charCount = new Map<string, number>();
+
+    for (let i = 0; i < str.length; i++) {
+        const currentChar = str[i];
+        charCount.set(currentChar, (charCount.get(currentChar) || 0) + 1);
+
+        if (i >= k) {
+            const leftChar = str[i - k];
+            charCount.set(leftChar, charCount.get(leftChar)! - 1);
+            if (charCount.get(leftChar) === 0) {
+                charCount.delete(leftChar);
+            }
+        }
+
+        if (i >= k - 1) {
+            maxUnique = Math.max(maxUnique, charCount.size);
+        }
+    }
+
+    return maxUnique;
+}
+
 //
 // ---
 //
