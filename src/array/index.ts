@@ -123,7 +123,7 @@ const twoSum = (arr: number[], k: number): number[] | null => {
         if (map.has(complement)) {
             return [complement, num];
         }
-        map.set(num, true);
+        map.set(num, Number(true));
     }
 
     return null;
@@ -465,3 +465,24 @@ const largestNumberUniqueCharacters = (str: string, k: number): number => {
 //      Вход: [2, 1, 5, 2, 8], S = 7
 //      Выход: 1 (подмассив [8])
 //      ```
+
+const minLengthSubarray = (arr: number[], s: number): number => {
+    let minLength = Infinity;
+    let currentSum = 0;
+    let left = 0;
+
+    for (let right = 0; right < arr.length; right++) {
+        currentSum += arr[right];
+
+        while (currentSum >= s) {
+            minLength = Math.min(minLength, right - left + 1);
+            currentSum -= arr[left];
+            left++;
+        }
+    }
+
+    return minLength === Infinity ? 0 : minLength;
+}
+
+
+
