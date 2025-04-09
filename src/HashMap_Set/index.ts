@@ -42,6 +42,26 @@ const isAnagram = (str1: string, str2: string): boolean => {
 // Условие: Верни мапу с количеством вхождений каждого символа в строку.
 // Пример: "aabbc" → {a: 2, b: 2, c: 1}
 
+const frequency = (str: string): Map<string, number> => {
+
+    const charCount = new Map<string, number>();
+
+    for (const char of str) {
+        charCount.set(char, (charCount.get(char) || 0) + 1);
+    }
+
+    return charCount;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 // 🔹 Средний уровень
