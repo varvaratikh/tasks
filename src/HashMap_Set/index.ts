@@ -66,16 +66,29 @@ const intersection = (arr: number[], arr2: number[]): number[] => {
     return [...new Set(common)];
 }
 
-
-
-
-
-
-
 // Два числа дают сумму (Two Sum)
 // Условие: Есть ли два числа в массиве, сумма которых равна target?
 // Тип: HashMap (ключ — число, значение — индекс)
 // Пример: [2,7,11,15], target=9 → true (2 + 7)
+
+
+function hasTwoSum(nums: number[], target: number): boolean {
+    const map = new Map<number, number>();
+
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (map.has(complement)) {
+            return true;
+        }
+        map.set(nums[i], i);
+    }
+
+    return false;
+}
+
+
+
+
 // Наиболее частый элемент (Mode)
 // Условие: Верни число, которое встречается чаще всего.
 // Пример: [1,3,1,3,2,1] → 1
