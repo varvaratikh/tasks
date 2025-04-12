@@ -93,6 +93,27 @@ function hasTwoSum(nums: number[], target: number): boolean {
 // Условие: Верни число, которое встречается чаще всего.
 // Пример: [1,3,1,3,2,1] → 1
 
+const frequentElement = (arr: number[]): number => {
+    const map = new Map<number, number>();
+
+    for (let num of arr) {
+        map.set(num, (map.get(num) || 0) + 1);
+    }
+
+    let maxCount = 0;
+    let mostFrequent = arr[0];
+
+    for (let [key, value] of map.entries()) {
+        if (value > maxCount) {
+            maxCount = value;
+            mostFrequent = key;
+        }
+    }
+
+    return mostFrequent;
+};
+
+
 
 
 // 🔹 Продвинутый уровень
@@ -100,6 +121,16 @@ function hasTwoSum(nums: number[], target: number): boolean {
 // Условие: Есть ли непрерывный подмассив с суммой 0?
 // Идея: Префиксные суммы + Set
 // Пример: [1, 2, -3, 4] → true
+
+const zeroSum = (arr: number[]) : boolean => {
+
+    return false
+}
+
+
+
+
+
 // Самая длинная последовательность
 // Условие: Найди длину самой длинной последовательной последовательности в неотсортированном массиве.
 // Тип: Set, не сортировать!
