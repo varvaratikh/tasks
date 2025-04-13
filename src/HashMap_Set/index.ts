@@ -122,9 +122,19 @@ const frequentElement = (arr: number[]): number => {
 // Идея: Префиксные суммы + Set
 // Пример: [1, 2, -3, 4] → true
 
-const zeroSum = (arr: number[]) : boolean => {
+const zeroSum = (arr: number[]): boolean => {
+    const seen = new Set<number>();
+    let sum = 0;
 
-    return false
+    for (const num of arr) {
+        sum += num;
+        if (sum === 0 || seen.has(sum)) {
+            return true;
+        }
+        seen.add(sum);
+    }
+
+    return false;
 }
 
 
