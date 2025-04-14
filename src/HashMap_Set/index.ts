@@ -145,6 +145,31 @@ const zeroSum = (arr: number[]): boolean => {
 // Условие: Найди длину самой длинной последовательной последовательности в неотсортированном массиве.
 // Тип: Set, не сортировать!
 // Пример: [100, 4, 200, 1, 3, 2] → 4 (последовательность: 1,2,3,4)
+
+
+const longestConsecutive = (nums: number[]): number => {
+    const numSet = new Set(nums);
+    let maxLength = 0;
+
+    for (let num of numSet) {
+        if (!numSet.has(num - 1)) {
+            let currentNum = num;
+            let currentStreak = 1;
+
+            while (numSet.has(currentNum + 1)) {
+                currentNum += 1;
+                currentStreak += 1;
+            }
+
+            maxLength = Math.max(maxLength, currentStreak);
+        }
+    }
+
+    return maxLength;
+}
+
+
+
 // Подстрока без повторяющихся символов
 // Условие: Найди длину самой длинной подстроки без повторов.
 // Тип: Set + Sliding Window
