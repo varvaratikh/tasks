@@ -174,3 +174,20 @@ const longestConsecutive = (nums: number[]): number => {
 // Условие: Найди длину самой длинной подстроки без повторов.
 // Тип: Set + Sliding Window
 // Пример: "abcabcbb" → 3 (abc)
+
+const withoutRepeating = (str: string): number => {
+    let set = new Set<string>();
+    let left = 0;
+    let maxLength = 0;
+
+    for (let right = 0; right < str.length; right++) {
+        while (set.has(str[right])) {
+            set.delete(str[left]);
+            left++;
+        }
+        set.add(str[right]);
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+
+    return maxLength;
+};
