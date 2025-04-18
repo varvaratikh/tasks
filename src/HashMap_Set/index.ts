@@ -219,6 +219,21 @@ const isUnique = (arr : number[]): number => {
 // Условие: Найти максимальную сумму подмассива (не обязательно уникального).
 // Пример: [-2,1,-3,4,-1,2,1,-5,4] → 6 (подмассив: [4,-1,2,1])
 
+const maxSumSubarray = (arr: number[]): number => {
+    let maxSoFar = arr[0];
+    let maxEndingHere = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
+        maxSoFar = Math.max(maxSoFar, maxEndingHere);
+    }
+
+    return maxSoFar;
+}
+
+
+
+
 //4) Пары с разницей k
 // Условие: Сколько уникальных пар в массиве с разницей k?
 // Пример: [1, 7, 5, 9, 2, 12, 3], k = 2 → 4 (пары: (1,3), (3,5), (5,7), (7,9))
