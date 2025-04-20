@@ -250,15 +250,30 @@ const couplesWithADifference = (arr: number[], k: number): number => {
 }
 
 
-
-
-
-
 //🔹 Продвинутый уровень
 // 4) Количество подмассивов с суммой = k
 // Условие: Найти количество непрерывных подмассивов, сумма которых равна k.
 // Идея: Префиксные суммы + HashMap
 // Пример: [1,1,1], k = 2 → 2
+
+
+const countSubarray = (arr: number[], k: number): number => {
+    const map = new Map<number, number>();
+    map.set(0, 1);
+
+    let prefixSum = 0;
+    let count = 0;
+
+    for (let num of arr) {
+        prefixSum += num;
+        if (map.has(prefixSum - k)) {
+            count += map.get(prefixSum - k)!;
+        }
+        map.set(prefixSum, (map.get(prefixSum) || 0) + 1);
+    }
+
+    return count;
+}
 
 
 //5) Перестановка палиндрома
