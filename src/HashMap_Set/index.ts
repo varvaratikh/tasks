@@ -280,4 +280,20 @@ const countSubarray = (arr: number[], k: number): number => {
 // Условие: Можно ли из строки составить палиндром?
 // Пример: "civic" → true, "ivicc" → true, "hello" → false
 
+const permutation = (str: string) : boolean => {
+    const freq = new Map();
 
+    for (let char of str) {
+        freq.set(char, (freq.get(char) || 0) + 1);
+    }
+
+    let oddCount = 0;
+
+    for (let count of freq.values()) {
+        if (count % 2 !== 0) {
+            oddCount++;
+        }
+    }
+
+    return oddCount <= 1;
+}
