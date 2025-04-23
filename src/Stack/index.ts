@@ -32,12 +32,30 @@ stack.push(20);
 
 //
 // **2) Очередь (FIFO)**
-// Условие: Реализуйте очередь с операциями enqueue и dequeue. Напишите функцию для проверки, является ли очередь пустой.
+// Условие: Реализуйте очередь с операциями enqueue и dequeue. Напишите
+// функцию для проверки, является ли очередь пустой.
 // Пример:
 // queue.enqueue(10);
 // queue.enqueue(20);
 // queue.dequeue(); // 10
 // queue.dequeue(); // 20
+
+
+const createQueue = <T>() =>{
+    const items: T[] = [];
+
+    return {
+        enqueue(item: T) {
+            items.push(item);
+        },
+        dequeue(): T | undefined {
+            return items.shift();
+        },
+        isEmpty(): boolean {
+            return items.length === 0;
+        }
+    };
+}
 //
 // **3) Дек (Двусторонняя очередь)**
 // Условие: Реализуйте дек (двустороннюю очередь) с операциями добавления и удаления элементов с обоих концов.
