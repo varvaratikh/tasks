@@ -65,6 +65,29 @@ const createQueue = <T>() =>{
 // deque.popFront(); // 10
 // deque.popBack(); // 20
 //
+
+const deq = <T>() => {
+    const items: T[] = [];
+
+    return {
+        pushFront(item: T) {
+            items.unshift(item);
+        },
+
+        pushBack(item: T) {
+            items.push(item);
+        },
+
+        popFront(): T | undefined {
+            return items.shift();
+        },
+        popBack(): T | undefined {
+            return items.pop();
+        }
+    };
+}
+
+
 // ---
 //
 // ### **🔹 Средний уровень**
