@@ -143,12 +143,50 @@ const monoStack = () => {
 
 
 // **5) Монотонная очередь**
-// Условие: Реализуйте монотонную очередь, которая хранит элементы в порядке неубывания. Реализуйте операцию для добавления элемента в очередь, сохраняя порядок.
+// Условие: Реализуйте монотонную очередь, которая хранит элементы в порядке неубывания.
+// Реализуйте операцию для добавления элемента в очередь, сохраняя порядок.
 // Пример:
 // monotonicQueue.enqueue(5);
 // monotonicQueue.enqueue(3);
 // monotonicQueue.enqueue(8);
 // monotonicQueue.dequeue(); // 3 (самый маленький)
+
+
+const monoQueue = () => {
+    const queue: number[] = [];
+
+    return {
+        enqueue(item: number) {
+            while (queue.length > 0 && queue[queue.length - 1] > item) {
+                queue.pop();
+            }
+            queue.push(item);
+        },
+
+        dequeue(): number | undefined {
+            return queue.shift();
+        },
+
+        getMin(): number {
+            if (queue.length === 0) {
+                throw new Error("Queue is empty");
+            }
+            return queue[0];
+        },
+
+        peek(): number | undefined {
+            return queue[0];
+        },
+
+        isEmpty(): boolean {
+            return queue.length === 0;
+        },
+
+        print(): void {
+            console.log(queue);
+        }
+    };
+};
 
 //
 // ---
