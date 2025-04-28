@@ -222,9 +222,30 @@ const isPalindrome = (str: string): boolean => {
 
 
 // **7) Максимальная сумма в очереди**
-// Условие: Используя очередь, реализуйте программу, которая находит максимальную сумму подмассива размером k в массиве.
+// Условие: Используя очередь, реализуйте программу, которая находит максимальную сумму
+// подмассива размером k в массиве.
 // Пример:
 // maxSumSubarray([1, 2, 3, 4, 5], 3); // 12 (подмассив [3, 4, 5])
+
+const maxSumSubarray = (arr: number[], k: number): number => {
+    if (arr.length < k) return 0;
+
+    let maxSum = 0;
+    let windowSum = 0;
+
+    for (let i = 0; i < k; i++) {
+        windowSum += arr[i];
+    }
+    maxSum = windowSum;
+
+    for (let i = k; i < arr.length; i++) {
+        windowSum += arr[i] - arr[i - k];
+        maxSum = Math.max(maxSum, windowSum);
+    }
+
+    return maxSum;
+}
+
 //
 // **8) Минимум в монотонной очереди**
 // Условие: Используя монотонную очередь, найдите минимальный элемент в подмассиве фиксированной длины, двигаясь по массиву.
