@@ -248,8 +248,33 @@ const maxSumSubarray = (arr: number[], k: number): number => {
 
 //
 // **8) Минимум в монотонной очереди**
-// Условие: Используя монотонную очередь, найдите минимальный элемент в подмассиве фиксированной длины, двигаясь по массиву.
+// Условие: Используя монотонную очередь, найдите минимальный элемент в
+// подмассиве фиксированной длины, двигаясь по массиву.
 // Пример:
 // minInSlidingWindow([4, 3, 1, 7, 2, 5], 3); // [1, 1, 1, 2]
 //
 // ---
+
+
+const minInSlidingWindow = (nums: number[], k: number): number => {
+    const result: number[] = [];
+    const deque: number[] = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        while (deque.length && deque[0] <= i - k) {
+            deque.shift();
+        }
+
+        while (deque.length && nums[deque[deque.length - 1]] >= nums[i]) {
+            deque.pop();
+        }
+
+        deque.push(i);
+
+        if (i >= k - 1) {
+            result.push(nums[deque[0]]);
+        }
+    }
+
+    return result;
+}
