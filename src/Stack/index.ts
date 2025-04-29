@@ -256,7 +256,7 @@ const maxSumSubarray = (arr: number[], k: number): number => {
 // ---
 
 
-const minInSlidingWindow = (nums: number[], k: number): number => {
+const minInSlidingWindow = (nums: number[], k: number): number[] => {
     const result: number[] = [];
     const deque: number[] = [];
 
